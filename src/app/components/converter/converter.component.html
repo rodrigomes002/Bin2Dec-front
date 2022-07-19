@@ -1,0 +1,7 @@
+<div>
+  <form [formGroup]="form" (submit)="convert()">
+    <input type="text" formControlName="binary">
+    <input type="submit" value="Convert">
+    <textarea [value]="result"></textarea>
+  </form>
+</div>
