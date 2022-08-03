@@ -36,7 +36,7 @@ export class ConverterComponent implements OnInit {
         let erro = JSON.stringify(error.error);
         let mensagem = erro.split(": ")[1].split("\\r")[0];
         console.log(mensagem);
-        this.snackBar.open("Error: "+ mensagem)
+        this.snackBar.open(mensagem)
     });
   }
 
