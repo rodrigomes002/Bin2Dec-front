@@ -1,17 +1,27 @@
 <div class="container">
   <div class="item">
-    <img src="../../../assets/img/binary-code.png" alt="Binary">
+    <img src="../../../assets/img/binary-code.png" alt="Binary" />
     <h1>Bin2Dec</h1>
   </div>
+    <form [formGroup]="form">
 
-  <div>
-    <form [formGroup]="form" (submit)="convert()">
       <div class="item">
-        <input type="text" formControlName="binary" placeholder="Digite um número binário..."/>
-        <input type="submit" value="Convert" />
-        <textarea [value]="result"></textarea>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Binary</mat-label>
+          <input
+            matInput
+            placeholder="Digite um número binário..."
+            formControlName="binary"
+            maxlength="8"
+          />
+        </mat-form-field>
+        <button mat-stroked-button (click)="convert()">Convert</button>
       </div>
+      <div class="item">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Base10 Result</mat-label>
+          <textarea matInput [value]="result"></textarea>
+        </mat-form-field>
+    </div>
     </form>
-  </div>
 </div>
-
