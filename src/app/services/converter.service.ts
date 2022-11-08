@@ -2,15 +2,17 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ConverterDTO } from '../models/converterDTO';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ConverterService {
-  private baseUrl = 'https://localhost:5001/api';
-  constructor(private http: HttpClient) { }
+  private baseUrl = environment.baseUrl;
 
-  convert(dto: ConverterDTO): Observable<any>{
-    return this.http.post(`${this.baseUrl}/converter`, dto);
+  constructor(private http: HttpClient) {}
+
+  convert(dto: ConverterDTO): Observable<any> {
+    return this.http.post(`${this.baseUrl}/api/converter`, dto);
   }
 }
