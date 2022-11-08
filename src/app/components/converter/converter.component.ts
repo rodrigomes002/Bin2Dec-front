@@ -3,7 +3,6 @@ import { ConverterService } from './../../services/converter.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { catchError } from 'rxjs/operators'
 
 @Component({
   selector: 'app-converter',
@@ -32,13 +31,11 @@ export class ConverterComponent implements OnInit {
     this.converterService.convert(dto).subscribe(
       (result) => {
         this.result = result;
-      },(error)=>{
-        let erro = JSON.stringify(error.error);
-        let mensagem = erro.split(": ")[1].split("\\r")[0];
-        console.log(mensagem);
-        this.snackBar.open(mensagem)
-    });
+        this.snackBar.ngOnDestroy();
+      },
+      (error) => {
+        this.snackBar.open(error.error);
+      }
+    );
   }
-
-
 }
